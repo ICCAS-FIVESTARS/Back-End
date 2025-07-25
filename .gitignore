@@ -21,7 +21,7 @@ Thumbs.db
 .env.*
 
 # 모델 가중치
-*.pt
+# *.pt
 *.pth
 *.onnx
 *.pb
