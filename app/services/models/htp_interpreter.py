@@ -1,4 +1,4 @@
-# interpreter.py
+# htp_interpreter.py
 # A Study on the Formal Analysis of House-Tree-Person(HTP) Test Based on AI Obejct Detection Model
 """
 HTP 해석 알고리즘 구현 (위치 해석 + 크기 해석)

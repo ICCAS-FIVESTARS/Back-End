@@ -1,4 +1,3 @@
-
 from ultralytics import YOLO
 
 MODEL_PATHS = {
