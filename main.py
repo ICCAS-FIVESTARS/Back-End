@@ -22,10 +22,16 @@ class GameClearData(BaseModel):
     username: str
     clear_time: float
 
+# 로그인 요청 데이터 형식
+class UserLogin(BaseModel):
+    username: str
+    password: str
+
 @app.get("/")
 def read_root():
     return {"message": "오성 memory garden 서버 작동 중!"}
 
+# 회원가입 API
 @app.post("/signup")
 def signup(user: UserCreate, db: Session = Depends(get_db)):
     existing_user = db.query(User).filter(User.username == user.username).first()
@@ -36,8 +42,28 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-    return {"message": f"{new_user.username}님, 가입이 완료되었습니다!"}
+    return {
+        "success": True,
+        "message": f"{new_user.username}님, 가입이 완료되었습니다!"
+    }
 
+# 로그인 API
+@app.post("/login")
+def login(user: UserLogin, db: Session = Depends(get_db)):
+    db_user = db.query(User).filter(
+        User.username == user.username,
+        User.password == user.password
+    ).first()
+    if not db_user:
+        raise HTTPException(status_code=401, detail="아이디 또는 비밀번호가 잘못되었습니다.")
+    
+    return {
+        "success": True,
+        "message": f"{user.username}님, 로그인 성공!",
+        "isFirstLogin": True
+    }
+
+# 게임 클리어 결과 저장 API
 @app.post("/game/clear")
 def save_game_clear(data: GameClearData, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.username == data.username).first()
@@ -49,6 +75,7 @@ def save_game_clear(data: GameClearData, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_result)
     return {
+        "success": True,
         "message": f"{data.username}님의 게임 결과가 저장되었습니다!",
         "clear_time": data.clear_time
     }
