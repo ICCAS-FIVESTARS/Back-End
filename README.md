@@ -32,72 +32,72 @@ http://34.63.32.189:8000
 
 ### ✅ 요청 형식 (JSON)
 
-```json
 {
   "username": "example_user",
   "password": "1234",
   "email": "user@example.com"
 }
-🟢 성공 응답 예시
-json
+
+ 🟢 성공 응답 예시
+
 {
   "success": true,
   "message": "example_user님, 가입이 완료되었습니다!"
 }
+
 🔴 실패 응답 예시 (이미 존재하는 아이디)
-json
 
 {
   "detail": "이미 존재하는 사용자입니다."
 }
+
 🔹 2. 로그인 API
 URL: /login
 
 Method: POST
 
 ✅ 요청 형식 (JSON)
-json
 
 {
   "username": "example_user",
   "password": "1234"
 }
+
 🟢 성공 응답 예시
-json
 
 {
   "success": true,
   "message": "example_user님, 로그인 성공!",
   "isFirstLogin": true
 }
+
 🔴 실패 응답 예시 (아이디 또는 비밀번호 오류)
-json
 
 {
   "detail": "아이디 또는 비밀번호가 잘못되었습니다."
 }
+
 🔹 3. 게임 결과 저장 API
 URL: /game/clear
 
 Method: POST
 
 ✅ 요청 형식 (JSON)
-json
 
 {
   "username": "example_user",
   "clear_time": 123.45
 }
+
 🟢 성공 응답 예시
-json
 
 {
   "success": true,
   "message": "example_user님의 게임 결과가 저장되었습니다!",
   "clear_time": 123.45
 }
+
 🔴 실패 응답 예시 (유저 없음)
-json
 
 {
   "detail": "사용자를 찾을 수 없습니다."
