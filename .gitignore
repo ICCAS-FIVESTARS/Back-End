@@ -21,20 +21,15 @@ Thumbs.db
 .env.*
 # 가상 환경 
 venv/
-*.pt
-*.dll
-*.lib
-# assets/weights/
-assets/dataset/
 
-# 모델 가중치
-# *.pt
+# 모델 가중치 및 라이브러리 파일
+*.pt
 *.pth
 *.onnx
 *.pb
-assets/weights/best.pt  # YOLO 학습 결과물 (커밋 안함)
-
-# YOLO 학습용 데이터셋 (용량 커서 업로드 제외 권장)
+*.dll
+*.lib
+assets/weights/
 assets/dataset/
 
 # Jupyter
