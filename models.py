@@ -17,6 +17,9 @@ class GameResult(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
-    clear_time = Column(Float)
+    stage_number = Column(Integer)
+    result_text = Column(String)
+    emotion = Column(String)
+    emotion_confidence = Column(Float)
 
     user = relationship("User", back_populates="results")
