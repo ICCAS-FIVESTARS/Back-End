@@ -19,6 +19,13 @@ Thumbs.db
 # 환경 설정
 .env
 .env.*
+# 가상 환경 
+venv/
+*.pt
+*.dll
+*.lib
+# assets/weights/
+assets/dataset/
 
 # 모델 가중치
 # *.pt
